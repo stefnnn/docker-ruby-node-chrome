@@ -1,4 +1,4 @@
-FROM ruby:3.0.2
+FROM ruby:3.1.0
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - \
   && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
   && echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list \
