@@ -17,3 +17,7 @@ Tag the image with both `latest` and a more specific identifier, e.g. `ruby-3.1.
     docker tag stefannn/docker-ruby-node-chrome:latest stefannn/docker-ruby-node-chrome:XXXXXX
     docker push stefannn/docker-ruby-node-chrome:latest
     docker push stefannn/docker-ruby-node-chrome:XXXXXX
+
+## How to list existing images
+
+    wget -qO- https://registry.hub.docker.com/v2/repositories/stefannn/docker-ruby-node-chrome/tags |grep -oE '"name":"[^"]+"'
