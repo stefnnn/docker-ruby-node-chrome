@@ -8,5 +8,4 @@ RUN mkdir -p /usr/apt/keyrings \
  && apt-get upgrade -qq \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
- && npm install -g yarn \
- && echo "Helpful information: \n$(cat /etc/issue) \n$(ruby --version) \nnode $(node -v) \n$(google-chrome --version)"
+ && npm install -g npm yarn
