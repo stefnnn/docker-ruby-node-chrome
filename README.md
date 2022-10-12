@@ -8,14 +8,16 @@ This image is not used for staging or production builds (we don't need Chrome th
 
 ## How to build & push a new image
 
-Tag the image with both `latest` and a more specific identifier, e.g. `ruby-3.1.2_node-16.17_chrome-106` (in lieu of XXXXXX).
+Tag the image with a specific identifier, e.g. `ruby-3.1.2_node-16.17_chrome-106` (in lieu of XXXXXX below).
+
+Note that using `latest` is not a good idea here, because different Git branches might  
+depend on different Ruby versions and we don't want to break everyone's Bitbucket builds.
 
     docker login
     git clone https://github.com/stefnnn/docker-ruby-node-chrome
     cd docker-ruby-node-chrome
-    docker build -t stefannn/docker-ruby-node-chrome:latest .
-    docker tag stefannn/docker-ruby-node-chrome:latest stefannn/docker-ruby-node-chrome:XXXXXX
-    docker push stefannn/docker-ruby-node-chrome:latest
+    docker build . # This will output the bundled Ruby, Node.js and Chrome versions for the tag
+    docker tag <the sha of the image that was just built> stefannn/docker-ruby-node-chrome:XXXXXX
     docker push stefannn/docker-ruby-node-chrome:XXXXXX
 
 ## How to list existing images
