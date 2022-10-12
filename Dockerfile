@@ -8,4 +8,10 @@ RUN mkdir -p /usr/apt/keyrings \
  && apt-get upgrade -qq \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
- && npm install -g npm yarn
+ && npm install -g npm yarn \
+ && echo \
+ && sed 's/ \\n \\l//;q' /etc/issue \
+ && RUBY=$(ruby --version |sed -E 's/[^0-9]*([0-9.]+).*/ruby-\1/')             \
+ && NODE=$(node --version |sed -E 's/[^0-9]*([0-9]+\.[0-9]+).*/node-\1/')      \
+ && CHROME=$(google-chrome --version |sed -E 's/[^0-9]*([0-9]+).*/chrome-\1/') \
+ && echo "${RUBY}_${NODE}_${CHROME}\n"
